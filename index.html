@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--=============== Favicon for All Browsers ===============-->
+  <link rel="icon" href="/Icon/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/Icon/logo192.png" sizes="192x192" type="image/png">
+
+  <!--=============== FONT AWESOME ===============-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!--=============== CSS ===============-->
+  <link rel="stylesheet" href="style.css">
+
+  <title>Code Runner</title>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav>
+    <img src="./Icon/logo192.png" alt="logo">
+    <p class="logo">Code Runner</p>
+  </nav>
+
+  <div class="container">
+    <div class="head">
+      <h2 id="caution">● Use PC for Better Experience</h2>
+
+      <div class="heading">
+        Code Runner Platform for <span>HTML</span>, <span>CSS</span>, and <span>JS</span>
+      </div>
+
+      <p><mark>Supports Only Internal Code for Instant Execution!</mark></p>
+
+      <!-- Developer Credit -->
+      <div class="developer-credit">
+        <p>💻 Made with ❤️ by <span class="developer-name">Vishal Maurya</span></p>
+      </div>
+    </div>
+
+    <!-- Input for HTML, CSS, and JS Code -->
+    <textarea id="inputCode" placeholder="Write your HTML, CSS & JS code here..."></textarea>
+
+    <!-- Buttons for Generate and Clear -->
+    <div class="button-container">
+      <button onclick="generateOutput()">
+        <i class="fa-solid fa-play"></i>Run Code
+      </button>
+      <button onclick="clearOutput()">Clear Code</button>
+    </div>
+
+    <h2>Output</h2>
+
+    <!-- Output Container -->
+    <div class="output-container" id="output">
+      <div class="placeholder">✨ Your code output will appear here</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
