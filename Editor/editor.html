@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/Icon/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../Editor/editor.css">
+  <link rel="stylesheet" href="../navbar.css">
+  
+  <title>Code Runner - Editor</title>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo-icon">
+      <img src="../Icon/logo192.png" alt="logo">
+    </div>
+    <span class="logo-text">Code Runner</span>
+    <span class="lang-label">HTML / CSS / JS</span>
+    <span class="about-sec">
+      <a href="../About/about.html">About</a>
+    </span>
+  </nav>
+
+  <!-- Mobile caution -->
+  <div class="caution-bar">Use PC for Better Experience</div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="tab active">
+      <i class="fa-regular fa-file-code"></i> index.html
+    </div>
+
+    <div class="toolbar-spacer"></div>
+
+    <button class="toolbar-btn" id="themeBtn" title="Toggle Theme" onclick="toggleTheme()">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+
+    <button class="toolbar-btn" title="Fullscreen" onclick="toggleFullscreen()">
+      <i class="fa-solid fa-expand"></i>
+    </button>
+
+    <button class="run-btn" onclick="runCode()">
+      <i class="fa-solid fa-play"></i> Run
+    </button>
+  </div>
+
+  <!-- Workspace -->
+  <div class="workspace">
+
+    <!-- Editor -->
+    <div class="editor-pane">
+      <div class="editor-inner">
+        <div class="line-numbers" id="lineNumbers">
+          <span>1</span>
+        </div>
+        <textarea id="inputCode" spellcheck="false" placeholder="Write your HTML, CSS &amp; JS code here..."></textarea>
+      </div>
+    </div>
+
+    <!-- Output -->
+    <div class="output-pane">
+      <div class="output-header">
+        <span>Output</span>
+        <button class="clear-btn" onclick="clearOutput()">Clear</button>
+      </div>
+      <iframe id="outputFrame" sandbox="allow-scripts"></iframe>
+    </div>
+
+  </div>
+
+  <script src="../Editor/script.js"></script>
+</body>
+
+</html>

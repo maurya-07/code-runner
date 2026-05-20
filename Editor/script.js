@@ -3,15 +3,15 @@
 function generateOutput() {
   const code = document.getElementById('inputCode').value.trim();
   const output = document.getElementById('output');
-  
+
   if (!code) {
-    output.innerHTML = '<div class="placeholder">⚠️ Please write some code first!</div>';
+    output.innerHTML = '<div class="placeholder">Please write some code first!</div>';
     return;
   }
-  
+
   try {
     output.innerHTML = '<div class="placeholder"><div class="loading"></div> Running code...</div>';
-    
+
     setTimeout(() => {
       const iframe = document.createElement('iframe');
       iframe.style.width = '100%';
@@ -19,69 +19,69 @@ function generateOutput() {
       iframe.style.border = 'none';
       iframe.style.borderRadius = '10px';
       iframe.style.minHeight = '360px';
-      
+
       iframe.srcdoc = code;
-      
+
       output.innerHTML = '';
       output.appendChild(iframe);
-      
-      iframe.onerror = function() {
-        output.innerHTML = '<div class="placeholder">❌ Error loading code. Please check your syntax.</div>';
+
+      iframe.onerror = function () {
+        output.innerHTML = '<div class="placeholder">Error loading code. Please check your syntax.</div>';
       };
-      
+
     }, 500);
-    
+
   } catch (error) {
-    output.innerHTML = '<div class="placeholder">❌ Error: ' + error.message + '</div>';
+    output.innerHTML = '<div class="placeholder">Error: ' + error.message + '</div>';
   }
 }
 
 function clearOutput() {
   const inputCode = document.getElementById('inputCode');
   const output = document.getElementById('output');
-  
+
   if (inputCode.value.trim() && !confirm('Are you sure you want to clear all code?')) {
     return;
   }
-  
+
   inputCode.value = '';
-  
+
   output.style.opacity = '0.5';
   setTimeout(() => {
-    output.innerHTML = '<div class="placeholder">✨ Your code output will appear here</div>';
+    output.innerHTML = '<div class="placeholder">Your code output will appear here</div>';
     output.style.opacity = '1';
   }, 200);
-  
+
   inputCode.focus();
 }
 
 // =============== KEYBOARD SHORTCUTS ===============
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const inputCode = document.getElementById('inputCode');
-  
-  document.addEventListener('keydown', function(e) {
+
+  document.addEventListener('keydown', function (e) {
     if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
       e.preventDefault();
       generateOutput();
     }
-    
+
     if ((e.ctrlKey || e.metaKey) && e.key === 'l') {
       e.preventDefault();
       clearOutput();
     }
-    
+
     if (e.target === inputCode && e.key === 'Tab') {
       e.preventDefault();
       const start = inputCode.selectionStart;
       const end = inputCode.selectionEnd;
-      
+
       inputCode.value = inputCode.value.substring(0, start) + '  ' + inputCode.value.substring(end);
       inputCode.selectionStart = inputCode.selectionEnd = start + 2;
     }
   });
-  
-  inputCode.addEventListener('input', function() {
+
+  inputCode.addEventListener('input', function () {
     this.style.height = 'auto';
     this.style.height = Math.max(this.scrollHeight, 300) + 'px';
   });
@@ -92,21 +92,21 @@ document.addEventListener('DOMContentLoaded', function() {
 function formatCode() {
   const inputCode = document.getElementById('inputCode');
   let code = inputCode.value;
-  
+
   code = code.replace(/></g, '>\n<');
   code = code.replace(/\n\s*\n/g, '\n');
-  
+
   inputCode.value = code;
 }
 
 function downloadCode() {
   const code = document.getElementById('inputCode').value;
-  
+
   if (!code.trim()) {
     alert('No code to download!');
     return;
   }
-  
+
   const blob = new Blob([code], { type: 'text/html' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -120,17 +120,17 @@ function downloadCode() {
 
 function shareCode() {
   const code = document.getElementById('inputCode').value;
-  
+
   if (!code.trim()) {
     alert('No code to share!');
     return;
   }
-  
+
   navigator.clipboard.writeText(code).then(() => {
     const output = document.getElementById('output');
     const originalContent = output.innerHTML;
-    output.innerHTML = '<div class="placeholder">📋 Code copied to clipboard!</div>';
-    
+    output.innerHTML = '<div class="placeholder">Code copied to clipboard!</div>';
+
     setTimeout(() => {
       output.innerHTML = originalContent;
     }, 2000);
@@ -143,21 +143,20 @@ function shareCode() {
 // =============== ERROR HANDLING ===============
 
 // Global error handler for iframe content
-window.addEventListener('message', function(e) {
+window.addEventListener('message', function (e) {
   if (e.data && e.data.type === 'error') {
     const output = document.getElementById('output');
-    output.innerHTML = '<div class="placeholder">❌ Runtime Error: ' + e.data.message + '</div>';
+    output.innerHTML = '<div class="placeholder"> Runtime Error: ' + e.data.message + '</div>';
   }
 });
 
 // Handle uncaught errors
-window.addEventListener('error', function(e) {
+window.addEventListener('error', function (e) {
   console.error('Code Runner Error:', e.error);
 });
 
 // =============== PERFORMANCE OPTIMIZATIONS ===============
 
-// Debounce function for auto-save (if needed in future)
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -177,12 +176,12 @@ function isMobile() {
 }
 
 if (isMobile()) {
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     const meta = document.querySelector('meta[name="viewport"]');
     if (meta) {
       meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
     }
-    
+
     const style = document.createElement('style');
     style.textContent = `
       @media (max-width: 768px) {
@@ -200,12 +199,12 @@ if (isMobile()) {
 function interceptConsoleLogs() {
   const originalLog = console.log;
   const logs = [];
-  
-  console.log = function(...args) {
+
+  console.log = function (...args) {
     logs.push(args.join(' '));
     originalLog.apply(console, arguments);
   };
-  
+
   return logs;
 }
 
@@ -213,32 +212,84 @@ function interceptConsoleLogs() {
 
 function validateHTML(code) {
   const errors = [];
-  
+
   if (!code.includes('<!DOCTYPE') && !code.includes('<html')) {
     errors.push('Consider adding DOCTYPE and HTML tags for proper structure');
   }
-  
+
   const openTags = code.match(/<(\w+)(?:\s|>)/g) || [];
   const closeTags = code.match(/<\/(\w+)>/g) || [];
-  
+
   if (openTags.length !== closeTags.length) {
     errors.push('Possible unclosed HTML tags detected');
   }
-  
+
   return errors;
 }
 
 // =============== INITIALIZATION ===============
 
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('🚀 Code Runner initialized successfully!');
-  
-  console.log('💡 Keyboard Shortcuts:');
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('Code Runner initialized successfully!');
+
+  console.log('Keyboard Shortcuts:');
   console.log('   Ctrl/Cmd + Enter: Run Code');
   console.log('   Ctrl/Cmd + L: Clear Code');
   console.log('   Tab: Insert spaces in textarea');
-  
+
   setTimeout(() => {
     document.getElementById('inputCode').focus();
   }, 1000);
 });
+
+const textarea = document.getElementById('inputCode');
+const lineNumbers = document.getElementById('lineNumbers');
+
+function updateLineNumbers() {
+  const lines = textarea.value.split('\n').length;
+  lineNumbers.innerHTML = Array.from({ length: lines }, (_, i) =>
+    `<span>${i + 1}</span>`
+  ).join('');
+}
+
+textarea.addEventListener('input', updateLineNumbers);
+
+textarea.addEventListener('scroll', () => {
+  lineNumbers.scrollTop = textarea.scrollTop;
+});
+
+textarea.addEventListener('keydown', (e) => {
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    textarea.value = textarea.value.substring(0, start) + '  ' + textarea.value.substring(end);
+    textarea.selectionStart = textarea.selectionEnd = start + 2;
+    updateLineNumbers();
+  }
+});
+
+function runCode() {
+  const frame = document.getElementById('outputFrame');
+  frame.srcdoc = textarea.value;
+}
+
+function clearOutput() {
+  document.getElementById('outputFrame').srcdoc = '';
+}
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+updateLineNumbers();
+
+function toggleTheme() {
+  const isDark = document.body.classList.toggle('dark');
+  const icon = document.querySelector('#themeBtn i');
+  icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/Icon/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../About/about.css">
+  <link rel="stylesheet" href="../navbar.css">
+  
+  <title>Code Runner - About</title>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo-icon"><img src="../Icon/logo192.png" alt="logo"></div>
+    <span class="logo-text">Code Runner</span>
+    <span class="lang-label">HTML / CSS / JS</span>
+    <span class="about-sec">
+      <a href="../Editor/editor.html">Editor</a>
+    </span>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">Browser-based playground</div>
+    <h1>Write code.<span>See it live.</span></h1>
+    <p class="hero-desc">
+      A zero-setup HTML, CSS &amp; JavaScript playground that runs entirely in your browser.
+      No installs. No accounts. Just open and start building.
+    </p>
+    <div class="hero-cta">
+      <a href="../Editor/editor.html" class="btn-primary">
+        <i class="fa-solid fa-code"></i> Open Editor
+      </a>
+      <a href="#features" class="btn-ghost">
+        <i class="fa-solid fa-circle-info"></i> Learn more
+      </a>
+    </div>
+  </section>
+
+  <!-- Editor mockup -->
+  <div class="editor-wrap">
+    <div class="editor-topbar">
+      <div class="dot-row">
+        <div class="dot r"></div>
+        <div class="dot y"></div>
+        <div class="dot g"></div>
+      </div>
+      <div class="tab-strip">
+        <div class="tab active">index.html</div>
+        <div class="tab">style.css</div>
+        <div class="tab">script.js</div>
+      </div>
+    </div>
+    <div class="editor-body">
+      <div class="code-pane">
+        <div><span class="ln">1</span> <span class="cm">&lt;!-- Hello, world --&gt;</span></div>
+        <div><span class="ln">2</span> <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"card"</span><span class="tag">&gt;</span></div>
+        <div><span class="ln">3</span> &nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span>Code Runner<span class="tag">&lt;/h2&gt;</span></div>
+        <div><span class="ln">4</span> &nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>Live preview ✓<span class="tag">&lt;/p&gt;</span></div>
+        <div><span class="ln">5</span> &nbsp;&nbsp;<span class="tag">&lt;div</span> <span class="attr">class=</span><span class="val">"bar"</span><span class="tag">&gt;&lt;/div&gt;</span></div>
+        <div><span class="ln">6</span> <span class="tag">&lt;/div&gt;</span></div>
+        <div><span class="ln">7</span></div>
+        <div><span class="ln">8</span> <span class="tag">&lt;script&gt;</span></div>
+        <div><span class="ln">9</span> &nbsp;&nbsp;<span class="fn">console</span>.<span class="fn">log</span>(<span class="val">'running!'</span>)</div>
+        <div><span class="ln">10</span> <span class="tag">&lt;/script&gt;</span></div>
+      </div>
+      <div class="preview-pane">
+        <div class="preview-inner">
+          <h2>Code Runner</h2>
+          <p>Live preview ✓</p>
+          <div class="preview-bar"></div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-label">Preview • localhost</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-strip">
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Languages</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0ms</div>
+      <div class="stat-label">Setup time</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">In-browser</div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="section-header">
+      <div>
+        <div class="section-label">What's inside</div>
+        <div class="section-title">Built for speed.<br>Built for focus.</div>
+      </div>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feat-icon a"><i class="fa-solid fa-bolt"></i></div>
+        <div class="feat-title">Instant Preview</div>
+        <p class="feat-desc">Your output updates in real-time as you type. No save button. No refresh.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon b"><i class="fa-solid fa-layer-group"></i></div>
+        <div class="feat-title">Three Panels</div>
+        <p class="feat-desc">Separate, resizable panels for HTML, CSS, and JavaScript — all in one screen.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon c"><i class="fa-solid fa-terminal"></i></div>
+        <div class="feat-title">Console Output</div>
+        <p class="feat-desc">Built-in console captures logs, errors, and warnings right inside the app.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon b"><i class="fa-solid fa-moon"></i></div>
+        <div class="feat-title">Dark Theme</div>
+        <p class="feat-desc">Easy on the eyes for long coding sessions. Syntax highlighting included.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon a"><i class="fa-solid fa-wifi-slash"></i></div>
+        <div class="feat-title">Works Offline</div>
+        <p class="feat-desc">PWA-ready. Install it once and code without an internet connection.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon c"><i class="fa-solid fa-mobile-screen"></i></div>
+        <div class="feat-title">Mobile Friendly</div>
+        <p class="feat-desc">Responsive layout so you can write and test code on any device.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how">
+    <div class="section-label">How it works</div>
+    <div class="section-title" style="font-size:32px; font-weight:800; letter-spacing:-0.03em; line-height:1.1;">Three steps. That's it.</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01 —</div>
+        <div class="step-line"></div>
+        <div class="step-title">Open the editor</div>
+        <p class="step-desc">Hit the button and the editor loads instantly — no login, no installs.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02 —</div>
+        <div class="step-line"></div>
+        <div class="step-title">Write your code</div>
+        <p class="step-desc">Type HTML, CSS, or JS in their respective panels. Syntax-highlighted out of the box.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03 —</div>
+        <div class="step-line"></div>
+        <div class="step-title">See it live</div>
+        <p class="step-desc">The preview pane renders your output instantly as you type. No buttons to click.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-text">
+      <h2>Ready to build something?</h2>
+      <p>Open the editor and start writing in seconds.</p>
+    </div>
+    <a href="../Editor/editor.html" class="btn-primary" style="white-space: nowrap; font-size:14px; padding: 14px 28px;">
+      <i class="fa-solid fa-play"></i> Launch Editor
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-brand">
+      <img src="./Icon/logo192.png" alt="" width="20" style="border-radius:4px">
+      Code Runner
+    </div>
+    <div class="footer-copy">HTML / CSS / JS — Browser Playground</div>
+  </footer>
+
+</body>
+</html>
