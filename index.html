@@ -5,10 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="/Icon/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="../Editor/editor.css">
-  <link rel="stylesheet" href="../navbar.css">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./editor.css">
+  <link rel="stylesheet" href="./navbar.css">
+
   <title>Code Runner - Editor</title>
 </head>
 
@@ -31,8 +32,14 @@
 
   <!-- Toolbar -->
   <div class="toolbar">
-    <div class="tab active">
-      <i class="fa-regular fa-file-code"></i> index.html
+    <div class="tab active" data-tab="html" onclick="switchTab('html')">
+      <i class="fa-brands fa-html5"></i> index.html
+    </div>
+    <div class="tab" data-tab="css" onclick="switchTab('css')">
+      <i class="fa-brands fa-css3-alt"></i> style.css
+    </div>
+    <div class="tab" data-tab="js" onclick="switchTab('js')">
+      <i class="fa-brands fa-js"></i> script.js
     </div>
 
     <div class="toolbar-spacer"></div>
@@ -74,7 +81,7 @@
 
   </div>
 
-  <script src="../Editor/script.js"></script>
+  <script src="../script.js"></script>
 </body>
 
 </html>

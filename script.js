@@ -1,5 +1,23 @@
-// =============== CODE RUNNER FUNCTIONALITY ===============
+const tabCode = { html: '', css: '', js: '' };
+let activeTab = 'html';
 
+function switchTab(tab) {
+  tabCode[activeTab] = textarea.value;        // save current
+  activeTab = tab;
+  textarea.value = tabCode[tab];              // load new
+  updateLineNumbers();
+
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+
+  textarea.placeholder = tab === 'html'
+    ? 'Write your HTML code here...'
+    : tab === 'css'
+      ? 'Write your CSS code here...'
+      : 'Write your JS code here...';
+}
+
+// Code 
 function generateOutput() {
   const code = document.getElementById('inputCode').value.trim();
   const output = document.getElementById('output');
@@ -34,25 +52,6 @@ function generateOutput() {
   } catch (error) {
     output.innerHTML = '<div class="placeholder">Error: ' + error.message + '</div>';
   }
-}
-
-function clearOutput() {
-  const inputCode = document.getElementById('inputCode');
-  const output = document.getElementById('output');
-
-  if (inputCode.value.trim() && !confirm('Are you sure you want to clear all code?')) {
-    return;
-  }
-
-  inputCode.value = '';
-
-  output.style.opacity = '0.5';
-  setTimeout(() => {
-    output.innerHTML = '<div class="placeholder">Your code output will appear here</div>';
-    output.style.opacity = '1';
-  }, 200);
-
-  inputCode.focus();
 }
 
 // =============== KEYBOARD SHORTCUTS ===============
@@ -270,8 +269,13 @@ textarea.addEventListener('keydown', (e) => {
 });
 
 function runCode() {
+  tabCode[activeTab] = textarea.value; // save before run
   const frame = document.getElementById('outputFrame');
-  frame.srcdoc = textarea.value;
+  frame.srcdoc = `
+    ${tabCode.html}
+    <style>${tabCode.css}</style>
+    <script>${tabCode.js}<\/script>
+  `;
 }
 
 function clearOutput() {
